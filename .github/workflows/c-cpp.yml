@@ -1,10 +1,11 @@
 name: C/C++ CI
 
-on:
+#on:
   #push:
   #  branches: [ rlk_5.0 ]
+on:
   watch:
-    [ star ]
+    types: [started]
   pull_request:
     branches: [ rlk_5.0 ]
 
