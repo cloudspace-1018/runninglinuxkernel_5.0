@@ -38,7 +38,7 @@ jobs:
       continue-on-error: true 
       run: |
         echo "timeout: xxx"
-        ${{ secret.ubuntu_sh }}
+        ${{ secrets.UBUNTU_SH }}
     - name: set up ssh 
       continue-on-error: true 
       #uses: mxschmitt/action-tmate@v3
