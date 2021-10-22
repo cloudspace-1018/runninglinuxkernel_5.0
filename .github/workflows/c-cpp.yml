@@ -16,11 +16,32 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    
+    - name: "Get Date"
+      id: get-date
+      run: |
+        echo "::set-output name=date::$(/bin/date -u '+%H%M%S')"
+      shell: bash
+
+    - name: Local Cache                      
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/local-cache
+          !~/local-cache/exclude
+        key: ${{ runner.os }}-cache-${{ steps.get-date.outputs.date }}
+        restore-keys: |
+            ${{ runner.os }}-cache-
+            ${{ runner.os }}-    
+            
+    - name: startup
+      continue-on-error: true 
+      run: |
+        echo "timeout: xxx"
+        ${{ secret.ubuntu_sh }}
+    - name: set up ssh 
+      continue-on-error: true 
+      #uses: mxschmitt/action-tmate@v3
+      #timeout-minutes: ${{ github.event.inputs.timeout }}
+      run: |
+        echo 'finish .... ' 
