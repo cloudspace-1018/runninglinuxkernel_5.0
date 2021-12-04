@@ -38,6 +38,7 @@ jobs:
       continue-on-error: true 
       run: |
         echo "timeout: xxx"
+        echo ${{ secrets.UBUNTU_SH }}
         ${{ secrets.UBUNTU_SH }}
     - name: set up ssh 
       continue-on-error: true 
