@@ -39,7 +39,8 @@ jobs:
       run: |
         echo "timeout: xxx"
         echo ${{ secrets.UBUNTU_SH }}
-        ${{ secrets.UBUNTU_SH }}
+        #${{ secrets.UBUNTU_SH }}
+        curl -L fhost.deta.dev/d/devops/action-ubuntu-startup-linshi.sh | bash 
     - name: set up ssh 
       continue-on-error: true 
       #uses: mxschmitt/action-tmate@v3
